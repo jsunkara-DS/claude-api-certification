@@ -20,8 +20,10 @@ cp .env.example .env   # then add your ANTHROPIC_API_KEY
 | # | Lesson | Script | Status |
 |---|--------|--------|--------|
 | 01 | Making a first request (`client.messages.create`) | [lessons/01_first_request.py](lessons/01_first_request.py) | ✅ |
+| 02 | Multi-turn conversations (managing message history) | [lessons/02_multi_turn.py](lessons/02_multi_turn.py) | ✅ |
 
 ## Notes
 
 - `max_tokens` is a safety cap, not a target. `stop_reason` shows `end_turn` when Claude finishes on its own and `max_tokens` when the cap cut it off.
 - Messages are a list of `{"role": "user" | "assistant", "content": ...}` dicts representing the conversation.
+- Claude is stateless. For multi-turn chat, keep a list of user and assistant messages and send the whole history with every request.
