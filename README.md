@@ -21,9 +21,11 @@ cp .env.example .env   # then add your ANTHROPIC_API_KEY
 |---|--------|--------|--------|
 | 01 | Making a first request (`client.messages.create`) | [lessons/01_first_request.py](lessons/01_first_request.py) | ✅ |
 | 02 | Multi-turn conversations (managing message history) | [lessons/02_multi_turn.py](lessons/02_multi_turn.py) | ✅ |
+| 03 | System prompts (role and behavior; math tutor demo) | [lessons/03_system_prompts.py](lessons/03_system_prompts.py) | ✅ |
 
 ## Notes
 
 - `max_tokens` is a safety cap, not a target. `stop_reason` shows `end_turn` when Claude finishes on its own and `max_tokens` when the cap cut it off.
 - Messages are a list of `{"role": "user" | "assistant", "content": ...}` dicts representing the conversation.
 - Claude is stateless. For multi-turn chat, keep a list of user and assistant messages and send the whole history with every request.
+- A system prompt sets Claude's role and behavior. The API rejects `system=None`, so only pass `system` when you actually have one.
